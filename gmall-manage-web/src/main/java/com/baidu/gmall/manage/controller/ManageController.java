@@ -1,8 +1,11 @@
 package com.baidu.gmall.manage.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.baidu.gmall.ListService;
 import com.baidu.gmall.ManageService;
 import com.baidu.gmall.bean.*;
+import com.baidu.gmall.bean.dto.SkuLsInfo;
+import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,6 +23,9 @@ public class ManageController {
      */
     @Reference
     private ManageService manageService;
+
+    @Reference
+    private ListService listService; //注入list业务层
 
     /**
      * http://localhost:8082/getCatalog1
@@ -81,7 +87,11 @@ public class ManageController {
     @RequestMapping("saveAttrInfo")
     public void saveAttrInfo(@RequestBody BaseAttrInfo baseAttrInfo) {
 
-        manageService.saveAttrInfo(baseAttrInfo);
+        //进行判断 避免空指针
+        if (baseAttrInfo != null) {
+
+            manageService.saveAttrInfo(baseAttrInfo);
+        }
 
     }
 
@@ -99,5 +109,29 @@ public class ManageController {
 
         //将平台属性对象中的平台属性值返回 进行显示
         return baseAttrInfo.getAttrValueList();
+    }
+
+    /**
+     *  保存数据到es中
+     * @param skuId
+     * @return
+     */
+    @RequestMapping("onSale")
+    @ResponseBody
+    public String onSale(String skuId) {
+
+        //调用方法获取 skuInfo 对象 用作拷贝到与前台显示对应的类中
+        SkuInfo skuInfo = manageService.getSkuInfo(skuId);
+
+        //创建保存到es中的对象 因为是空对象 所以需要进行赋值 对象对拷
+        SkuLsInfo skuLsInfo = new SkuLsInfo();
+
+        //进行属性对拷
+        BeanUtils.copyProperties(skuInfo,skuLsInfo);
+
+        //调用list层方法 将数据保存到es中
+        listService.saveSkuLsInfo(skuLsInfo);
+
+        return "OK";
     }
 }

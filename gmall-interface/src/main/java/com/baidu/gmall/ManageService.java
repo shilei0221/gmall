@@ -1,9 +1,6 @@
 package com.baidu.gmall;
 
-import com.baidu.gmall.bean.BaseAttrInfo;
-import com.baidu.gmall.bean.BaseCatalog1;
-import com.baidu.gmall.bean.BaseCatalog2;
-import com.baidu.gmall.bean.BaseCatalog3;
+import com.baidu.gmall.bean.*;
 
 import java.util.List;
 
@@ -54,4 +51,79 @@ public interface ManageService {
      * @return
      */
     BaseAttrInfo getAttrInfo(String attrId);
+
+    /**
+     *  查询商品集合
+     * @param spuInfo
+     * @return
+     */
+    List<SpuInfo> getSpuInfoList(SpuInfo spuInfo);
+
+    /**
+     *  查询基本销售属性表  就是查询销售属性字典表
+     * @return
+     */
+    List<BaseSaleAttr> getBaseSaleAttrList();
+
+    /**
+     *  保存 商品信息
+     * @param spuInfo
+     */
+    void saveSpuInfo(SpuInfo spuInfo);
+
+    /**
+     * 根据spuId 查询图片列表
+     * @param spuImage
+     * @return
+     */
+    List<SpuImage> getSpuImageList(SpuImage spuImage);
+
+
+    /**
+     *  根据 spuId 查询销售属性与销售属性值
+     * @param spuId
+     * @return
+     */
+    List<SpuSaleAttr> getSpuSaleAttrList(String  spuId);
+
+    /**
+     * 保存 sku 信息
+     * @param skuInfo
+     */
+    void saveSkuInfo(SkuInfo skuInfo);
+
+    /**
+     * 根据 skuId 查询skuInfo信息 进行页面渲染
+     * @param skuId
+     * @return
+     */
+    SkuInfo getSkuInfo(String skuId);
+
+    /**
+     * 根据 skuId 查询图片列表
+     * @param skuId
+     * @return
+     */
+    List<SkuImage> getSkuImageList(String skuId);
+
+    /**
+     * 根据 spuId 查询对应的skuId 中的所有销售属性与销售属性值
+     * @param skuInfo
+     * @return
+     */
+    List<SpuSaleAttr> getSpuSaleAttrListCheckBySku(SkuInfo skuInfo);
+
+    /**
+     * 根据 spuId 查询该spuId下对应的skuId属性
+     * @param spuId
+     * @return
+     */
+    List<SkuSaleAttrValue> getSkuSaleAttrValueListBySpu(String spuId);
+
+    /**
+     * 通过平台属性值id  查询获取平台属性与平台属性值
+     * @param attrValueIdList
+     * @return
+     */
+    List<BaseAttrInfo> getAttrInfoList(List<String> attrValueIdList);
 }

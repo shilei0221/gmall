@@ -32,4 +32,19 @@ public interface UserInfoService {
     List<UserInfo> getUserByName(UserInfo userInfo);
 
     UserInfo getUserInfo(String userId);
+
+    /**
+     * 根据用户信息查询用户是否存在
+     *
+     * @param userInfo
+     * @return
+     */
+    UserInfo login(UserInfo userInfo);
+
+    /**
+     * 认证中心 通过用户id 认证用户是否登录 查看redis
+     * @param userId
+     * @return
+     */
+    UserInfo verify(String userId);
 }
