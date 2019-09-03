@@ -1,0 +1,53 @@
+﻿
+${AnsiColor.YELLOW}
+
+
+                ${AnsiColor.YELLOW}
+                                                                                                                   
+                                                                                                    
+
+     DG
+     DjffGf
+     fffffL.
+    fffffffD .
+    jffffDGfffLf
+     Dfffffffffft    GDDDDt
+      DfffffffffD  LEDiitEG
+      Lffffffffff DtiGiDij
+      fffffffffffKiiLDELiDDD
+     LfffffffffGDEK######KDDEEEE,
+  .DEDLtiDW#########################G
+  EDiiEi;K###########################D.
+ .tiEiiED#############################E
+ DiiiDDDW###################WKEKKK#####E
+ tiDDEtE###########WEDDEEf:.      :tEDDD,
+EEjiitiE#######EDEt                     DD
+ DDiDi;######DL                       . E.DLE,
+    iDD#####K                        .D j DEDD
+      E#####D          EDE,          D: .DDG
+      E#####D.           .          .;DD jLD
+      D######:          ED,      .   EDD  D.
+      D######D          DDE   D .f    , .,D
+       ######E          LD    DEjG     ;;;D
+       D######L               .DiE     ,;,.
+       E######D      .;;;      LGD        .
+        D######;     ;,;,                 f
+        E######E                          D
+         D#####W.                        ;t     j
+         .G#####D                       .D     f,.
+       :  .D####E:                     .D      D E
+       DDDt.E####E                    DG       D E
+        D##DDDD##D:                 ,D  jf    D  E
+         D#####EDWD:              EE;.EDfj  ED   E
+          E######DEDD::      :EEDGE:LfffjEED.   .:
+          .ED#####DDELDDDDGEf    Dj Lffff.      G
+          EGDDDEDD .   D.       D,.j DffD:     .E
+          .jffffG  G  .GjG    .EfDDD  EfD:    LD
+           DffffD  E  EiiiLEDDftiitD  DfE.  fD
+          Djffff,  D DDLiiiG   iiiiD. tfD DK
+         E..Dfff.  D   jiij   .iiifDG.DfDD
+        E  .GfffE  D   fEiD    EDij D EfD
+      .E    :DfffE D   D.GE      DD E Dfj
+      D.    KDfffE D                .:Ef.
+       D   G  EffD D               : EDj
+       .E.  G tffD.D   L             DfD

@@ -3,6 +3,9 @@ package com.baidu.gmall;
 import com.baidu.gmall.bean.OrderInfo;
 import com.baidu.gmall.bean.enums.ProcessStatus;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * @author Alei
  * @create 2019-08-30 19:25
@@ -68,4 +71,33 @@ public interface OrderService {
      * @param orderId
      */
     void sendOrderStatus(String orderId);
+
+    /**
+     * 获取过期订单
+     * @return
+     */
+    List<OrderInfo> getExpiredOrderList();
+
+    /**
+     * 处理未完成的订单  过期订单的关闭
+     * @param orderInfo
+     */
+    void execExpiredOrder(OrderInfo orderInfo);
+
+    /**
+     * 将订单信息封装为一个map
+     *
+     * 设置初始化仓库信息方法
+     * @param orderInfo
+     * @return
+     */
+    Map initWareOrder(OrderInfo orderInfo);
+
+    /**
+     * 进行拆单 返回一个拆单后的子订单集合
+     * @param orderId
+     * @param wareSkuMap
+     * @return
+     */
+    List<OrderInfo> splitOrder(String orderId, String wareSkuMap);
 }

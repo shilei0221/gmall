@@ -87,10 +87,10 @@ public class OrderInfo implements Serializable {
         this.totalAmount=  totalAmount;
     }
 
-    public String getTradeBody(){
-        OrderDetail orderDetail = orderDetailList.get(0);
-        String tradeBody=orderDetail.getSkuName()+"等"+orderDetailList.size()+"件商品";
-        return tradeBody;
-    }
+//    public String getTradeBody(){
+//        OrderDetail orderDetail = orderDetailList.get(0);
+//        String tradeBody=orderDetail.getSkuName()+"等"+orderDetailList.size()+"件商品";
+//        return tradeBody;
+//    }
 
 }

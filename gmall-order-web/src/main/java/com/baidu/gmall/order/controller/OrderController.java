@@ -1,6 +1,7 @@
 package com.baidu.gmall.order.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.alibaba.fastjson.JSON;
 import com.baidu.gmall.CartInfoService;
 import com.baidu.gmall.ManageService;
 import com.baidu.gmall.OrderService;
@@ -11,10 +12,12 @@ import com.baidu.gmall.bean.enums.ProcessStatus;
 import com.baidu.gmall.config.LoginRequire;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Alei
@@ -191,4 +194,43 @@ public class OrderController {
         return "redirect://payment.gmall.com/index?orderId="+orderId;
     }
 
+
+    /**
+     * 当支付完成之后 判断商品是否为不同的库存中 进行拆单
+     * http://order.gmall.com/orderSplit?orderId=xxx&wareSkuMap=xxx
+     *
+     * @param request
+     * @return
+     *
+     *
+     */
+    @RequestMapping("orderSplit")
+    @ResponseBody
+    public String orderSplit(HttpServletRequest request) {
+
+        //从请求路径获取订单id
+        String orderId = request.getParameter("orderId");
+
+        String wareSkuMap = request.getParameter("wareSkuMap");
+
+        //定义订单集合对象 用来封装子订单集合中的订单详情
+        List<Map> wareMapList = new ArrayList<>();
+
+        //调用业务层获取子订单集合
+        /*根据库存接口文档 中的参数 获取到拆单后的子订单集合*/
+        List<OrderInfo> subOrderInfoList = orderService.splitOrder(orderId,wareSkuMap);
+
+        //循环子订单集合
+        for (OrderInfo orderInfo : subOrderInfoList) {
+
+            //调用业务成方法 将每一个订单信息转换为一个 map
+            Map map = orderService.initWareOrder(orderInfo);
+
+            //将每一个子订单信息添加到集合中   因为可能有多个子订单
+            wareMapList.add(map);
+        }
+
+        //将封装的多个子订单集合转换为json字符串返回
+        return JSON.toJSONString(wareMapList);
+    }
 }
